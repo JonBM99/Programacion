@@ -184,6 +184,7 @@ public class Main {
 		//Entrada numero
 		
 		System.out.println("El numero es negativo " + (num14 < 0));
+		System.out.println("El numero es positivo " + (num14 >= 0));
 		//Resultado
 		}
 }

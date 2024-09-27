@@ -136,54 +136,28 @@ public class Main {
 		double mayor2 = Math.max(mayor1, num9);
 		//Operaciones
 		
-		System.out.println("El numero mayor es: " + Math.max(mayor1, mayor2));
-		//Resultado
+		 System.out.println("El numero mayor es: " + Math.max(mayor1, mayor2));
+		 //Resultado
 		 
-		
-		//Ejercicio 11
-		System.out.println("Introduce un numero: ");
+		 //Ejercicio 11
+		 System.out.println("Introduce un numero: ");
 			entrada = new Scanner(System.in);
 			double num10 = entrada.nextInt();
-		System.out.println("Introduce un numero diferente a 0: ");
+		 System.out.println("Introduce otro numero: ");
 			entrada = new Scanner(System.in);
 			double num11 = entrada.nextInt();
-		//Entrada numeros
+			//Entrada numeros
 			
-		double suma1 = (num10 + num11);
-		double resta1 = (num10 - num11);
-		double producto1 = (num10 * num11);
-		double division1 = (num10 / num11);
-		//Operaciones
-		
-		System.out.println("La suma de los numeros es: " + suma1);
-		System.out.println("La resta de los numeros es: " + resta1);
-		System.out.println("El producto de los numeros es: " + producto1);
-		System.out.println("La division de los numeros es: " + division1);
-		//Resultados
+			double suma1 = (num10 + num11);
+			double resta1 = (num10 - num11);
+			double producto1 = (num10 * num11);
+			double division1 = (num10 / num11);
+			//Operaciones
 			
-		//Ejercicio 12 
-		System.out.println("Introduce un numero: ");
-			entrada = new Scanner(System.in);
-			double num12 = entrada.nextInt();
-		System.out.println("Introduce otro numero: ");
-			entrada = new Scanner(System.in);
-			double num13 = entrada.nextInt();
-		//Entrada numeros
-		
-		double mayor3 = Math.max(num12, num13);
-		//Operacion
-	
-		System.out.println("El numero mayor es: " + mayor);
-		//Resultado
-		
-		
-		//Ejercicio 13
-		System.out.println("Introduce un numero: ");
-		entrada = new Scanner(System.in);
-		double num14 = entrada.nextInt();
-		//Entrada numero
-		
-		System.out.println("El numero es negativo " + (num14 < 0));
-		//Resultado
-		}
+			System.out.println("La suma de los numeros es: " + suma1);
+			System.out.println("La resta de los numeros es: " + resta1);
+			System.out.println("El producto de los numeros es: " + producto1);
+			System.out.println("La division de los numeros es: " + division1);
+			//Resultados
+	}
 }
