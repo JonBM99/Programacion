@@ -62,15 +62,20 @@ public class Main {
 		nota = entrada.nextInt();
 		
 		if (nota < 5) {
-			System.out.println("Insuficiente");}
+			System.out.println("Insuficiente");
+			}
 		else if (nota < 6) {
-			System.out.println("Suficiente");}
+			System.out.println("Suficiente");
+			}
 		else if (nota < 7) {
-			System.out.println("Bien");}
+			System.out.println("Bien");
+			}
 		else if (nota < 9) {
-			System.out.println("Notable");}
-		else {
-			System.out.println("Sobresaliente");}
+			System.out.println("Notable");
+			}
+		else if (nota <= 10){
+			System.out.println("Sobresaliente");
+			}
 		
 		//Ejercicio 8 
 		System.out.println("Introduce un numero positivo:");
@@ -87,5 +92,96 @@ public class Main {
 			}
 			System.out.println("El factorial es " + facto + " es: " + factorial);
 		}
+		
+		//Ejericicio 9
+		System.out.println("Introduce la hora: ");
+		entrada = new Scanner(System.in);
+		int hora;
+		hora = entrada.nextInt();
+		System.out.println("Introduce los minutos: ");
+		entrada = new Scanner(System.in);
+		int minutos;
+		minutos = entrada.nextInt();
+		System.out.println("Introduce los segundos: ");
+		entrada = new Scanner(System.in);
+		int segundos;
+		segundos = entrada.nextInt();
+		
+		if (hora > 23) {
+			System.out.println("No se puede realizar.");
+		}
+		if (minutos > 59) {
+			System.out.println("No se puede realizar.");
+		}
+		if (segundos > 59) {
+			System.out.println("No se puede realizar.");
+		}
+		
+		segundos++;
+		if(segundos == 60) {
+			segundos = 0; minutos ++;			
+		}
+		if (minutos == 60) {
+			minutos = 0; hora ++;
+		}
+		if (hora >= 24) {
+			hora = 0 ;
+		}
+		
+		System.out.println("La nueva hora, minutos y segundos es: " + hora +":" + minutos +":" + segundos);
+		
+		//Ejercicio 10
+		int intro = 0;
+		boolean negativos = false;
+		while (intro < 10) {
+			System.out.println("Introduce un numero no nulo: ");
+			entrada = new Scanner(System.in);
+			int numeros;
+			numeros = entrada.nextInt();
+		
+			if (numeros == 0) {
+				System.out.println("Repite los numero y revisa que no haya un 0");
+				continue;
+				}
+			if (numeros < 0) {
+			negativos = true;
+			}
+			
+			intro++;
+		 }
+		
+		if (negativos == true) {
+		System.out.println("Se ha leido al menos un numero negativo.");}
+		else {System.out.println("No se ha leido ningun numero negativo");}
+		
+		//Ejericicio 11
+		int intro1 = 0;
+		int positivo = 0;
+		int negativo = 0;
+		while (intro1 < 10) {
+			System.out.println("Introduce un numero no nulo: ");
+			entrada = new Scanner(System.in);
+			int numeros;
+			numeros = entrada.nextInt();
+						
+			if (numeros == 0) {
+				System.out.println("Repite los numero y revisa que no haya un 0");
+					continue;
+			}
+			intro1 ++;
+			
+			if (numeros < 0) {
+				negativo ++;
+			}
+			else {
+				positivo ++;
+			}
+		}
+			System.out.println("Se han leido " + positivo +" numeros positivos");
+			System.out.println("Se han leido " + negativo +" numeros negativos");
+		
+		//Ejercicio 12
+			
 	}
 }
+
