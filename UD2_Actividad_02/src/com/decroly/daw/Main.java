@@ -181,7 +181,70 @@ public class Main {
 			System.out.println("Se han leido " + negativo +" numeros negativos");
 		
 		//Ejercicio 12
+		int positivo1 = 0;
+		int negativo1 = 0;
+		int numero1;
+		do { 
+			System.out.println("Introduce numeros, ten en cuenta que el 0 parara el programa");
+			entrada = new Scanner(System.in);
+			numero1 = entrada.nextInt();
 			
+			if (numero1 < 0) {
+				negativo1 ++;
+			}
+			else {
+				positivo1 ++;
+			}
+		} while (numero1 != 0);
+		
+		System.out.println("Se han leido " + positivo1 +" numeros positivos");
+		System.out.println("Se han leido " + negativo1 +" numeros negativos");
+
+	//Ejercicio 13
+	int suma = 0;
+	int multiplicacion = 1;
+	for (int i = 1; i < 10; i++) {
+		suma += i;
+		multiplicacion *= i;
+	}
+	System.out.println("La suma de los diez primeros numeros naturales es: " + suma);
+	System.out.println("La multiplicacion de los diez primeros numeros naturales es: " + multiplicacion);
+
+	//Ejercicio 14
+	entrada = new Scanner(System.in);
+
+	System.out.println("Introduce tu nombre:");
+	String nombre = entrada.nextLine();
+	
+	System.out.println("Introduce las horas trabajadas:");
+	double horastrabajadas = entrada.nextDouble();
+
+	System.out.println("Introduce la tarifa por hora: ");
+	double tarifaXhora = entrada.nextDouble();
+
+	double salariobruto;
+	if (horastrabajadas > 35) {
+		salariobruto = horastrabajadas * tarifaXhora;
+	} else {
+		double horasextra = horastrabajadas - 35;
+		salariobruto = (35 * tarifaXhora) + (horasextra	* 1.5);
+	}
+
+	double impuestos;
+	if (salariobruto <= 500) {
+		impuestos = 0;
+	} else if (salariobruto <= 900) {
+		impuestos = (salariobruto - 500) * 0.25;
+	} else {
+		impuestos = (400 * 0.25) + ((salariobruto - 900) * 0.45);
+	}
+
+	double salarioneto = salariobruto - impuestos;
+	
+	System.out.println("Nombre: " + nombre);
+	System.out.println("Salario bruto: " + salariobruto);
+	System.out.println("Las tasas son: " + impuestos);
+	System.out.println("Salario neto: " + salarioneto);
 	}
 }
 
