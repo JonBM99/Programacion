@@ -57,53 +57,76 @@ public class Main {
         System.out.println("Se necesitan " + b20 + " billetes de 20 euros");
         System.out.println("Se necesitan " + b10 + " billetes de 10 euros");
         System.out.println("Se necesitan " + b5 + " billetes de 5 euros");
+        System.out.print("\n");
 
         //Ejercicio 2
         String option = "";
-        System.out.println("Introduce un numero");
-        double num1 = entrada.nextDouble();
-        System.out.println("Introduce otro numero");
-        double num2 = entrada.nextDouble();
+        double num1;
+        double num2;
 
         do {
-            option = entrada.nextLine();
             System.out.println("Pulsa 1 para realizar una suma.");
             System.out.println("Pulsa 2 para hacer una resta.");
             System.out.println("Pulsa 3 para realizar una multiplicacion.");            
             System.out.println("Pulsa 4 para realizar una division.");
             System.out.println("Pulsa 5 para salir del menu.");
+            entrada = new Scanner(System.in);
+            option = entrada.nextLine();
 
             switch (option) {
                 case "1":
+                System.out.println("Introduce un numero");
+                num1 = entrada.nextDouble();
+                System.out.println("Introduce otro numero");
+                num2 = entrada.nextDouble();
                     double suma = num1 + num2;
                     System.out.println("La suma de los numeros es: " + suma);
+                    System.out.print("\n");
                     break;
 
                 case "2":
+                System.out.println("Introduce un numero");
+                num1 = entrada.nextDouble();
+                System.out.println("Introduce otro numero");
+                num2 = entrada.nextDouble();
                     double resta = num1 - num2;
                     System.out.println("La resta de los numeros es: " + resta);
+                    System.out.print("\n");
                     break;
 
                 case "3":
+                System.out.println("Introduce un numero");
+                num1 = entrada.nextDouble();
+                System.out.println("Introduce otro numero");
+                num2 = entrada.nextDouble();
                     double multiplicacion = num1 * num2;
-                    System.out.println("La suma de los numeros es: " + multiplicacion);
+                    System.out.println("La multiplicacion de los numeros es: " + multiplicacion);
+                    System.out.print("\n");
                     break;
 
                 case "4":
+                System.out.println("Introduce un numero");
+                num1 = entrada.nextDouble();
+                System.out.println("Introduce otro numero");
+                num2 = entrada.nextDouble();
+
                     if (num2 == 0) {
                         System.out.println("No se puede hacer la division entre 0");
                     } else {
                         double division = num1 / num2;
-                        System.out.println("La suma de los numeros es: " + division);
+                        System.out.println("La division de los numeros es: " + division);
+                        System.out.print("\n");
                     }
                     break;
 
                 case "5":
                     System.out.println("Saliendo del programa. Hasta pronto");
+                    System.out.print("\n");
                     break;
 
                 default:
                     System.out.println("Introduce una opcion correcta del menu");
+                    System.out.print("\n");
             }
 
         } while (!option.equals ("5"));
