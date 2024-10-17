@@ -60,7 +60,7 @@ public class Main {
         System.out.print("\n");
 
         //Ejercicio 2
-        String option = "";
+        String option;
         double num1;
         double num2;
 
