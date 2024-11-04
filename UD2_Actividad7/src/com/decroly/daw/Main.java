@@ -18,9 +18,6 @@ public class Main {
         
         do{
             String elecciondelusuario = entrada.nextLine().toUpperCase();
-            // do { 
-            //     System.out.println("Introduce un valor correcto por favor.");               
-            // } while(elecciondelusuario.equals("P") == false || elecciondelusuario.equals("P") == false ||);
 
             String elecciondelaia = opciones[random.nextInt(opciones.length)];
 
