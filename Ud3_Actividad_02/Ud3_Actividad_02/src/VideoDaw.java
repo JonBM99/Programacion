@@ -106,7 +106,7 @@ public class VideoDaw {
         return isAdd;
     }
 
-    public boolean  devolverPelicula(int c, int p){
+    public boolean devolverPelicula(int c, int p){
         this.posicionCliente(c);
         this.posicionPelicula(p).devolver();
         boolean isRemove = false;
@@ -130,9 +130,9 @@ public class VideoDaw {
 
     public boolean darBajaPelicula(Pelicula pelicula, int p){
         boolean quitarPelicula = false;
-        if(pelicula != null){
+        if(p >= 0 && p < nPelisRegistradas){
             this.peliculasRegistradas[nPelisRegistradas] = null;
-            for (int i = 0; i < nPelisRegistradas; i++) {
+            for (int i = p + 1; i < nPelisRegistradas; i++) {
                 this.peliculasRegistradas[nPelisRegistradas - 1] = this.peliculasRegistradas[i];
             }
             this.peliculasRegistradas[nPelisRegistradas - 1] = null;

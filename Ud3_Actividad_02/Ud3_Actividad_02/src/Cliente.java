@@ -31,7 +31,7 @@ public class Cliente {
         return nombre;
     }
 
-    public int getNumSocio() {
+    public int getNumSocio(){
         return numSocio;
     }
 

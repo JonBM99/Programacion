@@ -57,7 +57,7 @@ public class GestionVideoDaw {
                         LocalDate fechaNacimiento = myUtils.leerFecha("Escribe la fecha de nacimiento del cliente con el siguiente formato: DD/MM/YYYY");
                         LocalDate hoy = LocalDate.now();
                         Period mayorEdad = Period.between(fechaNacimiento, hoy);
-                        if(mayorEdad.getYears() > 18){
+                        if(mayorEdad.getYears() >= 18){
                             Cliente c = new Cliente(dni, nombre, direccionCliente, fechaNacimiento);
                             v1.registrarCliente(c);
                             cliente = c;
