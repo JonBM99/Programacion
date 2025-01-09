@@ -1,12 +1,12 @@
 public abstract class Astros {
-    private String nombre;
-    private double masa;
-    private double diametro;
-    private double rotacion;
-    private double traslacion;
-    private double distancia;
-    private double temperatura;
-    private double gravedad;
+    protected String nombre;
+    protected double masa;
+    protected double diametro;
+    protected double rotacion;
+    protected double traslacion;
+    protected double distancia;
+    protected double temperatura;
+    protected double gravedad;
 
     public Astros(double diametro, double distancia, double gravedad, double masa, String nombre, double rotacion, double temperatura, double traslacion) {
         this.diametro = diametro;
