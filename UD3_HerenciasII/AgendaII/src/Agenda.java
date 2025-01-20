@@ -12,9 +12,20 @@ public class Agenda {
         return false;
     }
 
-    public boolean eliminarContacto(String nombre){
+    public boolean eliminarContactoPersona(String nombre){
         for (int i = 0; i < nContactos; i++) {
-            if (contactosRegistrados[i].getNombre().equals(nombre)) {
+            if (contactosRegistrados[i].getNombre().equals(nombre) && contactosRegistrados[i] instanceof ContactoPersona) {
+                contactosRegistrados[i] = contactosRegistrados[nContactos - 1];
+                nContactos--;
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean eliminarContactoEmpresa(String nombreEmpresa){
+        for (int i = 0; i < nContactos; i++) {
+            if (contactosRegistrados[i].getNombre().equals(nombreEmpresa) && contactosRegistrados[i] instanceof ContactoEmpresa) {
                 contactosRegistrados[i] = contactosRegistrados[nContactos - 1];
                 nContactos--;
                 return true;
@@ -47,9 +58,18 @@ public class Agenda {
         }
     }
 
-    public int buscarContacto(String nombre){
+    public int buscarContactoPersona(String nombre){
         for (int i = 0; i < nContactos; i++) { 
-            if (contactosRegistrados[i].getNombre().equals(nombre)) {
+            if (contactosRegistrados[i].getNombre().equals(nombre) && contactosRegistrados[i] instanceof ContactoPersona) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int buscarContactoEmpresa(String nombreEmpresa){
+        for (int i = 0; i < nContactos; i++) { 
+            if (contactosRegistrados[i].getNombre().equals(nombreEmpresa) && contactosRegistrados[i] instanceof ContactoEmpresa) {
                 return i;
             }
         }

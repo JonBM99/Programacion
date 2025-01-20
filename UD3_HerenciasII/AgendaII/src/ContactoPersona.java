@@ -2,7 +2,8 @@ public class ContactoPersona extends Contactos{
     private String cumpleaños;
 
     public ContactoPersona(String nombre, String telefono, String cumpleaños) {
-        super(nombre, telefono);
+        this.nombre = nombre;
+        this.telefono = telefono;
         this.cumpleaños = cumpleaños;
     }
 

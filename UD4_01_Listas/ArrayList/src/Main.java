@@ -50,7 +50,6 @@ public class Main {
         }
 
         productos.clear();// Elimina todos los valores del ArrayList
-
         LinkedList<Producto> productos1 = new LinkedList<Producto>();//Crea una linkedlist de productos.
 
         productos1.add(producto);//Añadir los productos a la linkedlist.

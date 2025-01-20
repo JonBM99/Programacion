@@ -11,9 +11,11 @@ public class ProgramaAgenda {
         System.out.println("1. Agregar contacto persona");
         System.out.println("2. Agregar contacto empresa");
         System.out.println("3. Mostrar contactos");
-        System.out.println("4. Buscar contacto");
-        System.out.println("5. Eliminar contacto");
-        System.out.println("6. Salir");
+        System.out.println("4. Buscar contacto persona");
+        System.out.println("5. Buscar contacto empresa");
+        System.out.println("6. Eliminar contacto persona");
+        System.out.println("7. Eliminar contacto empresa");
+        System.out.println("8. Salir");
         System.out.print("Ingrese una opción: ");
         opcion = entrada.nextInt();
         entrada.nextLine();
@@ -58,9 +60,9 @@ public class ProgramaAgenda {
                 agenda.listarContactos();
                 break;
             case 4:
-                System.out.print("Ingresa el nombre del contacto a buscar: ");
+                System.out.print("Ingresa el nombre del contacto de persona a buscar: ");
                 String nombreBuscar = entrada.nextLine();
-                int indice = agenda.buscarContacto(nombreBuscar);
+                int indice = agenda.buscarContactoPersona(nombreBuscar);
                 if (indice != -1) {
                     System.out.println("Contacto encontrado: " + agenda.getContacto(indice));
                 } else {
@@ -68,22 +70,42 @@ public class ProgramaAgenda {
                 }
                 break;
             case 5:
-                System.out.print("Ingresa el nombre del contacto a eliminar: ");
+                System.out.print("Ingresa el nombre del contacto de empresa a buscar: ");
+                String nombreBuscar1 = entrada.nextLine();
+                int indice1 = agenda.buscarContactoEmpresa(nombreBuscar1);
+                if (indice1 != -1) {
+                    System.out.println("Contacto encontrado: " + agenda.getContacto(indice1));
+                } else {
+                    System.out.println("Contacto no encontrado.");
+                }
+                break;
+            case 6:
+                System.out.print("Ingresa el nombre del contacto persona a eliminar: ");
                 String nombreEliminar = entrada.nextLine();
-                boolean eliminado = agenda.eliminarContacto(nombreEliminar);
+                boolean eliminado = agenda.eliminarContactoPersona(nombreEliminar);
                 if (eliminado) {
                     System.out.println("Contacto eliminado correctamente.");
                 } else {
                     System.out.println("Contacto no encontrado.");
                 }
                 break;
-            case 6:
+            case 7:
+                System.out.print("Ingresa el nombre del contacto empresa a eliminar: ");
+                String nombreEliminar1 = entrada.nextLine();
+                boolean eliminado1 = agenda.eliminarContactoEmpresa(nombreEliminar1);
+                if (eliminado1) {
+                    System.out.println("Contacto eliminado correctamente.");
+                } else {
+                    System.out.println("Contacto no encontrado.");
+                }
+                break;
+            case 8:
                 System.out.println("Saliendo del programa.");
                 break;
             default:
                 System.out.println("Ingresa una opcion valida.");
                 break;
         }
-    } while (opcion != 6);
+    } while (opcion != 8);
     }
 }
