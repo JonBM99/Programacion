@@ -1,4 +1,4 @@
-public class Producto {
+public class Producto implements Comparable<Producto> {
     private String nombre;
     private int cantidad;
     
@@ -18,10 +18,15 @@ public class Producto {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Producto{");
-        sb.append("nombre=").append(nombre);
-        sb.append(", cantidad=").append(cantidad);
+        sb.append("Producto:");
+        sb.append("nombre: ").append(nombre);
+        sb.append(", cantidad: ").append(cantidad);
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public int compareTo(Producto otroProducto) {
+        return this.nombre.compareTo(otroProducto.getNombre());
     }
 }

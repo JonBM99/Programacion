@@ -1,11 +1,10 @@
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Producto> productos = new ArrayList<Producto>();//Crea un arraylist de productos.
+        ArrayList<Producto> productos = new ArrayList<>();//Crea un arraylist de productos.
         Producto producto = new Producto("Portatil", 1);
         Producto producto1 = new Producto("Monitor", 2);
         Producto producto2 = new Producto("Movil", 3);
@@ -22,7 +21,7 @@ public class Main {
         Iterator <Producto> itera = productos.iterator();//Mostrar productos usando iterator.
         Producto cadaProducto;
         while (itera.hasNext()){
-            cadaProducto =itera.next();
+            cadaProducto = itera.next();
             System.out.println(cadaProducto);
         }
 
@@ -32,7 +31,7 @@ public class Main {
         Producto productoNuevo = new Producto("Impresora", 6);
         productos.add(2, productoNuevo);//Añadir un producto en la posicion 2.
 
-        System.out.println("Productos en el arraylist: ");
+        System.out.println("\n" + "Productos en el arraylist: ");
         Iterator <Producto> itera1 = productos.iterator();
         Producto cadaProducto1;
         while (itera1.hasNext()){
@@ -40,17 +39,16 @@ public class Main {
             System.out.println(cadaProducto1);
         }
 
-        productos.sort(Comparator.comparing(Producto::getNombre));//Ordenar los productos por nombre.
-        System.out.println("Productos ordenados por nombre: ");
+        productos.sort((p1, p2) -> p1.getNombre().compareTo(p2.getNombre())); //Ordenar alfabéticamente los productos con compareTo y sort.
+        System.out.println("\n" + "Productos ordenados alfabéticamente en la arraylist: ");
         Iterator <Producto> itera2 = productos.iterator();
-        Producto cadaProducto2;
         while (itera2.hasNext()){
-            cadaProducto2 = itera2.next();
+            Producto cadaProducto2 = itera2.next();
             System.out.println(cadaProducto2);
         }
 
-        productos.clear();// Elimina todos los valores del ArrayList
-        LinkedList<Producto> productos1 = new LinkedList<Producto>();//Crea una linkedlist de productos.
+        
+        LinkedList<Producto> productos1 = new LinkedList<>();//Crea una linkedlist de productos.
 
         productos1.add(producto);//Añadir los productos a la linkedlist.
         productos1.add(producto1);
@@ -58,7 +56,7 @@ public class Main {
         productos1.add(producto3);
         productos1.add(producto4);
 
-        System.out.println("Productos en la linkedlist: ");
+        System.out.println("\n" + "Productos en la linkedlist: ");
         Iterator <Producto> itera3 = productos1.iterator();//Mostrar productos usando iterator.
         Producto cadaProducto3;
         while (itera3.hasNext()){
@@ -72,7 +70,7 @@ public class Main {
         Producto productoNuevo1 = new Producto("Impresora", 6);
         productos1.add(2, productoNuevo1);//Añadir un producto en la posicion 2.
 
-        System.out.println("Productos en la linkedlist: ");
+        System.out.println("\n" + "Productos en la linkedlist: ");
         Iterator <Producto> itera4 = productos1.iterator();
         Producto cadaProducto4;
         while (itera4.hasNext()){
@@ -80,15 +78,14 @@ public class Main {
             System.out.println(cadaProducto4);
         }
 
-        productos1.sort(Comparator.comparing(Producto::getNombre));//Ordenar los productos por nombre.
-        System.out.println("Productos ordenados por nombre: ");
+        productos1.sort((p1, p2) -> p1.getNombre().compareTo(p2.getNombre())); //Ordenar alfabéticamente los productos con compareTo y sort.
+        System.out.println("\n" + "Productos ordenados alfabéticamente en la linkedlist: ");
         Iterator <Producto> itera5 = productos1.iterator();
-        Producto cadaProducto5;
         while (itera5.hasNext()){
-            cadaProducto5 = itera5.next();
+            Producto cadaProducto5 = itera5.next();
             System.out.println(cadaProducto5);
         }
-
+        
         productos1.clear();// Elimina todos los valores del LinkedList
     }
 }
