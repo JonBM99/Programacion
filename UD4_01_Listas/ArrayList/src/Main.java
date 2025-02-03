@@ -47,6 +47,8 @@ public class Main {
             System.out.println(cadaProducto2);
         }
 
+        productos.clear();// Elimina todos los valores del ArrayList
+
         
         LinkedList<Producto> productos1 = new LinkedList<>();//Crea una linkedlist de productos.
 
