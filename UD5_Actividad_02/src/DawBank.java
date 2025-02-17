@@ -20,7 +20,6 @@ public class DawBank {
         String nombre = entrada.nextLine();
         System.out.println("Introduzca el DNI del cliente.");
         String dni = entrada.nextLine();
-        System.out.println("Introduce la fecha de nacimiento del cliente en formato dd/mm/yyyy");
         LocalDate fechaNacimiento = leerFecha("Introduce la fecha de nacimiento del cliente en formato dd/mm/yyyy");
         System.out.println("Introduzca el teléfono del cliente.");
         String telefono = entrada.nextLine();
