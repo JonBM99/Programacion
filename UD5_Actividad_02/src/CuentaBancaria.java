@@ -37,28 +37,30 @@ public class CuentaBancaria {
         return mostrartinfomove;
     }
 
-    public void ingreso(double cantidad){
-        if(cantidad <= 0){
-            System.out.println("La cantidad debe ser mayor que 0.");
-        }
-        if(cantidad >= 3000){
-            System.out.println("AVISO: Notificar a hacienda.");
-        }
+    public void ingreso(double cantidad) throws AvisarHaciendaException, Exception{
         saldo += cantidad;
         registrarMovimiento("Ingreso", cantidad);
+        if(cantidad >= 3000){
+            throw new AvisarHaciendaException("AVISO: Notificar a hacienda.");
+        }
+        if(cantidad <= 0){
+            throw new NumeroNoValidoException("La cantidad debe ser mayor que 0.");
+        }
     }
 
-    public void retirada(double cantidad){
-        if(cantidad <= 0){
-            System.out.println("La cantidad debe ser mayor que 0.");
-        }
-        if(cantidad >= 3000){
-            System.out.println("AVISO: Notificar a hacienda.");
-        }
-        if((saldo-cantidad) < -50){
-            System.out.println("AVISO: Saldo negativo");
-        }
+    public void retirada(double cantidad) throws AvisarHaciendaException, NumeroNoValidoException{
+        
         saldo-=cantidad;
         registrarMovimiento("Retirada", cantidad);
+        if(cantidad >= 3000){
+            throw new AvisarHaciendaException("AVISO: Notificar a hacienda.");
+        }
+        if(cantidad <= 0){
+            throw new NumeroNoValidoException("La cantidad debe ser mayor que 0.");
+        }
+
+        if((saldo-cantidad) < -50){
+            throw new NumeroNoValidoException("No se puede retirar más dinero del que hay en la cuenta.");
+        }
     }
 }
