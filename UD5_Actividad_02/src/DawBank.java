@@ -24,20 +24,21 @@ public class DawBank {
         Cliente cliente = null;
         CuentaBancaria cuenta = null;
         try {
-        System.out.println("Vamos a crear un cliente para la cuenta.");
-        System.out.println("Introduzca el nombre del cliente.");
-        String nombre = entrada.nextLine();
-        System.out.println("Introduzca el DNI del cliente.");
-        String dni = entrada.nextLine();
-        LocalDate fechaNacimiento = leerFecha("Introduce la fecha de nacimiento del cliente en formato dd/mm/yyyy");
-        System.out.println("Introduzca el teléfono del cliente.");
-        String telefono = entrada.nextLine();
-        System.out.println("Introduzca el email del cliente.");
-        String email = entrada.nextLine();
-        System.out.println("Introduzca la dirección del cliente.");
-        String direccion = entrada.nextLine();
-        cliente = new Cliente(nombre, dni, fechaNacimiento, telefono, email, direccion);
-        cuenta = new CuentaBancaria(iban, cliente);
+            System.out.println("Vamos a crear un cliente para la cuenta.");
+            System.out.println("Introduzca el nombre del cliente.");
+            String nombre = entrada.nextLine();
+            System.out.println("Introduzca el DNI del cliente.");
+            String dni = entrada.nextLine();
+            LocalDate fechaNacimiento = leerFecha("Introduce la fecha de nacimiento del cliente en formato dd/mm/yyyy");
+            System.out.println("Introduzca el teléfono del cliente.");
+            String telefono = entrada.nextLine();
+            System.out.println("Introduzca el email del cliente.");
+            String email = entrada.nextLine();
+            System.out.println("Introduzca la dirección del cliente.");
+            String direccion = entrada.nextLine();
+            
+            cliente = new Cliente(nombre, dni, fechaNacimiento, telefono, email, direccion);
+            cuenta = new CuentaBancaria(iban, cliente);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -99,6 +100,9 @@ public class DawBank {
                     System.out.println(e.getMessage());
                     e.printStackTrace();
                 } catch (NumeroNoValidoException e){
+                    System.out.println(e.getMessage());
+                    e.printStackTrace();
+                } catch (SaldoInsuficienteException e){
                     System.out.println(e.getMessage());
                     e.printStackTrace();
                 }

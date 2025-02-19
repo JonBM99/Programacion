@@ -37,7 +37,7 @@ public class CuentaBancaria {
         return mostrartinfomove;
     }
 
-    public void ingreso(double cantidad) throws AvisarHaciendaException, Exception{
+    public void ingreso(double cantidad) throws AvisarHaciendaException, NumeroNoValidoException{
         saldo += cantidad;
         registrarMovimiento("Ingreso", cantidad);
         if(cantidad >= 3000){
@@ -48,7 +48,7 @@ public class CuentaBancaria {
         }
     }
 
-    public void retirada(double cantidad) throws AvisarHaciendaException, NumeroNoValidoException{
+    public void retirada(double cantidad) throws AvisarHaciendaException, NumeroNoValidoException, SaldoInsuficienteException{
         
         saldo-=cantidad;
         registrarMovimiento("Retirada", cantidad);
@@ -60,7 +60,7 @@ public class CuentaBancaria {
         }
 
         if((saldo-cantidad) < -50){
-            throw new NumeroNoValidoException("No se puede retirar más dinero del que hay en la cuenta.");
+            throw new SaldoInsuficienteException("No se puede retirar más dinero del que hay en la cuenta.");
         }
     }
 }
