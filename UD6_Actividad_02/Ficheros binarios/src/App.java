@@ -1,7 +1,5 @@
+import java.io.DataOutputStream;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,10 +9,7 @@ public class App {
     public static void main(String[] args) throws Exception {
         Scanner entrada = new Scanner(System.in);
         List <Producto> productos = new LinkedList<>();
-        try (FileOutputStream fichero = new FileOutputStream("Ficheros UNICODE\\resources\\almacen.dat", false)) {   
-        } catch (Exception e) {
-            System.out.println("fichero no encontrado");
-        }
+        
 
         String opcion;
         do { 
@@ -47,15 +42,15 @@ public class App {
                     }
                     break;
                 case "4":
-                    try (PrintWriter writer = new PrintWriter(new FileWriter("Ficheros UNICODE\\resources\\almacen.dat", false))) {
-                        for (Producto prod : productos) {
-                            String comando = "Producto= " + prod.getCodigo() + "," + prod.getNombre() + "," + prod.getCantidad() + "," + prod.getPrecio();
-
-                            writer.println(comando);
-                        }
-                            System.out.println("Productos guardados en el fichero.");
-                        } catch (IOException e) {
-                            System.out.println("Error al guardar productos: " + e.getMessage());
+                        try (FileOutputStream fichero = new FileOutputStream("Ficheros binarios\\resources\\almacen.dat", false); DataOutputStream escritor = new DataOutputStream(fichero)) {
+                            for (Producto prod : productos) {
+                                escritor.writeInt(prod.getCodigo());
+                                escritor.writeUTF(prod.getNombre());
+                                escritor.writeInt(prod.getCantidad());
+                                escritor.writeDouble(prod.getPrecio());
+                            }
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
                         }
                     break; 
                 case "5":

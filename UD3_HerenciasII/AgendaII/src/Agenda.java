@@ -3,6 +3,14 @@ public class Agenda {
     private int nContactos = 0;
     private static int maxContactos = 50;
 
+    
+    
+    
+    /** 
+     * @param contacto
+     * @return boolean
+     */
+    
     public boolean agregarContacto(Contactos contacto) {
         if (nContactos < maxContactos) {
             contactosRegistrados[nContactos] = contacto;

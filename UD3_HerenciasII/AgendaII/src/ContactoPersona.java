@@ -7,10 +7,18 @@ public class ContactoPersona extends Contactos{
         this.cumpleaños = cumpleaños;
     }
 
+    
+   
+    
+    /** 
+     * @return String
+     */
     public String getCumpleaños() {
         return cumpleaños;
     }
 
+    
+    
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

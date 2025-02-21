@@ -136,13 +136,24 @@ public class App {
             System.out.println(gato.toString());
         }
     }
+    /**
+     * 
+     * @param p
+     * @return
+     * @throws Exception
+     */
     public static String imprimePositivo(int p) throws Exception{
         if(p<0){
             throw new Exception("El valor introducido es menor de 0");
         }
         return "El valor introducido es: " + p;
     }
-
+/**
+ * 
+ * @param n
+ * @return
+ * @throws Exception
+ */
     public static String imprimeNegativo(int n) throws Exception{
         if(n>=0){
             throw new Exception("El valor introducido es mayor de 0");
