@@ -3,9 +3,6 @@ public class Agenda {
     private int nContactos = 0;
     private static int maxContactos = 50;
 
-    
-    
-    
     /** 
      * @param contacto
      * @return boolean
@@ -20,6 +17,11 @@ public class Agenda {
         return false;
     }
 
+    
+    /** 
+     * @param nombre
+     * @return boolean
+     */
     public boolean eliminarContactoPersona(String nombre){
         for (int i = 0; i < nContactos; i++) {
             if (contactosRegistrados[i].getNombre().equals(nombre) && contactosRegistrados[i] instanceof ContactoPersona) {

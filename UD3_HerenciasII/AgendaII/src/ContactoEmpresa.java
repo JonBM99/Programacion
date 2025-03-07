@@ -6,9 +6,6 @@ public class ContactoEmpresa extends Contactos{
         this.telefono = telefono;
         this.paginaweb = paginaweb;
     }
-
-    
-    
     
     /** 
      * @return String
@@ -17,6 +14,10 @@ public class ContactoEmpresa extends Contactos{
         return paginaweb;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

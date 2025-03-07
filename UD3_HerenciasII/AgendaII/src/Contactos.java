@@ -2,9 +2,6 @@ public abstract class Contactos {
     protected String nombre;
     protected String telefono;
 
-    
-    
-    
     /** 
      * @return String
      */
@@ -12,6 +9,10 @@ public abstract class Contactos {
         return nombre;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getTelefono() {
         return telefono;
     }

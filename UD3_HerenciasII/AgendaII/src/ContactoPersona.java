@@ -7,9 +7,6 @@ public class ContactoPersona extends Contactos{
         this.cumpleaños = cumpleaños;
     }
 
-    
-   
-    
     /** 
      * @return String
      */
@@ -19,6 +16,10 @@ public class ContactoPersona extends Contactos{
 
     
     
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

@@ -1,9 +1,7 @@
 import java.util.Scanner;
 
 public class ProgramaAgenda {
-    
-    
-    
+
     /** 
      * @param args
      */

@@ -7,6 +7,10 @@ public class Contactos {
         this.telefono = telefono;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getNombre() {
         return nombre;
     }
