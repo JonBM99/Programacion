@@ -12,8 +12,8 @@ public class Pelicula extends Articulo{
     public Pelicula(String titulo, Genero_Peliculas generoP) {
         super(titulo);
         this.generoP = generoP;
-        this.fechaAlquiler = fechaAlquiler;
-        this.isAlquilada = isAlquilada;
+        this.fechaAlquiler = null;
+        this.isAlquilada = false;
     }
 
     public Genero_Peliculas getGenero() {

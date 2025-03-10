@@ -86,12 +86,7 @@ public class VideoDaw {
         return resultado.toString();
     }
 
-    public Cliente posicionCliente(int i){
-        if (i >= 0 && i < clientesRegistrados.size()) {
-            return clientesRegistrados.get(i);
-        }
-        return null;
-    }
+    
 
     public String mostrarArticulosNoAlquilados(VideoDaw videoclub) {
         Iterator<Articulo> itera = articulosRegistrados.iterator();
@@ -142,7 +137,7 @@ public class VideoDaw {
         return "Artículo alquilado exitosamente a " + cliente.getNombre();
             }
 
-            public String devolverArticulo(int cod, int codSocio) throws TiempoExcedidoException{
+        public String devolverArticulo(int cod, int codSocio) throws TiempoExcedidoException{
                 Articulo articulo = null;
                 Cliente cliente = null;
                 for (Articulo a : articulosRegistrados) {
@@ -188,9 +183,10 @@ public class VideoDaw {
                 return "Artículo devuelto exitosamente por " + cliente.getNombre();
             }
 
-            public String darBajaCliente(int codSocio){  for (Cliente cliente : clientesRegistrados) {
-        if (cliente.getCodSocio() == codSocio) {
-            clientesRegistrados.remove(cliente);
+    public String darBajaCliente(int codSocio){  
+        for (Cliente cliente : clientesRegistrados) {
+            if (cliente.getCodSocio() == codSocio) {
+                clientesRegistrados.remove(cliente);
             return cliente.toString();
         }
     }

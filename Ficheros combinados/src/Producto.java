@@ -54,16 +54,16 @@ public class Producto {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Producto{");
-        sb.append("referencia=").append(referencia);
-        sb.append(", descripcion=").append(descripcion);
-        sb.append(", tipo=").append(tipo);
-        sb.append(", canridad=").append(canridad);
-        sb.append(", precio=").append(precio);
-        sb.append(", descuento=").append(descuento);
-        sb.append(", iva=").append(iva);
-        sb.append(", aplicarDto=").append(aplicarDto);
-        sb.append('}');
+        sb.append("Producto:");
+        sb.append("referencia:").append(referencia);
+        sb.append(", descripcion:").append(descripcion);
+        sb.append(", tipo:").append(tipo);
+        sb.append(", cantidad:").append(cantidad);
+        sb.append(", precio:").append(precio);
+        sb.append(", descuento:").append(descuento);
+        sb.append(", iva:").append(iva);
+        sb.append(", aplicarDto:").append(aplicarDto);
+        sb.append('.');
         return sb.toString();
     }
 }

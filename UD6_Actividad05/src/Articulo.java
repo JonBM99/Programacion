@@ -13,7 +13,7 @@ public class Articulo {
         codArticulo++;
         this.titulo = titulo;
         this.fechaRegistro = LocalDate.now();
-        this.fechaBaja = fechaBaja;
+        this.fechaBaja = null;
     }
 
     public int getCod() {

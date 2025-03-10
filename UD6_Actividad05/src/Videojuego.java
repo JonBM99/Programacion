@@ -12,8 +12,8 @@ public class Videojuego extends Articulo {
     public Videojuego(String titulo, Genero_Videojuegos generoV) {
         super(titulo);
         this.generoV = generoV;
-        this.fechaAlquiler = fechaAlquiler;
-        this.isAlquilada = isAlquilada;
+        this.fechaAlquiler = null;
+        this.isAlquilada = false;
     }
 
     public Genero_Videojuegos getGenero() {

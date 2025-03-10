@@ -1,13 +1,27 @@
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        boolean eof = false;
+        try (FileInputStream file = new FileInputStream(".\\Resources\\Biblioteca.dat"); ObjectInputStream reader = new ObjectInputStream(File)){
+            while (!eof){
+                Libro lLeido = (Libro) reader.readObject();
+                
+            }
+        }
+        
+        
         List <Libro> Biblioteca = new LinkedList<>();
         Libro l = null;
         Scanner entrada = new Scanner(System.in);
@@ -27,8 +41,7 @@ public class App {
                     String titulo = entrada.nextLine();
                     System.out.println("Introduce el autor del libro");
                     String autor = entrada.nextLine();
-                    System.out.println("Introduce la fecha de publicacion del libro");
-                    String fechaPublicacion = entrada.nextLine();
+                    LocalDate fechaPublicacion = leerFecha("Introduce la fecha de publicacion del libro");
                     Libro libro = new Libro(isbn, titulo, autor, fechaPublicacion);
                     l = libro;
                     Biblioteca.add(l);
@@ -37,7 +50,7 @@ public class App {
                 String opcion2;
                 do {
                     System.out.println("Busqueda de libros:");
-                    System.out.println("Pulsa 1 para buscr por isbn");
+                    System.out.println("Pulsa 1 para buscar por isbn");
                     System.out.println("Pulsa 2 para buscar por titulo");
                     System.out.println("Pulsa 3 para buscar por autor");
                     System.out.println("Pulsa 4 para buscar por fecha de publicacion");
@@ -72,8 +85,7 @@ public class App {
                             }
                         break;
                         case "4":
-                            System.out.println("Introduce la fecha de publicacion del libro a buscar");
-                            String fechaBuscar = entrada.nextLine();
+                            LocalDate fechaBuscar = leerFecha("Introduce la fecha de publicacion del libro");
                             for (Libro l1 : Biblioteca) {
                                 if (l1.getFechaPublicacion().equals(fechaBuscar)) {
                                     System.out.println(l1);
@@ -111,4 +123,14 @@ public class App {
         } while (!opcion.equals("5"));
         
     }
+
+    public static LocalDate leerFecha(String mensaje){
+        Scanner entrada = new Scanner(System.in);
+        DateTimeFormatter formatter =  DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        System.out.println("Escribe la fecha en formato DD/MM/AAAA");
+        String dateString = entrada.next();
+        LocalDate fechaLocalDate = LocalDate.parse(dateString, formatter);
+        return fechaLocalDate;
+    }
+
 }

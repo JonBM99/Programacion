@@ -1,4 +1,5 @@
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class Libro implements Serializable{
 
@@ -7,9 +8,9 @@ public class Libro implements Serializable{
     private String isbn;
     private String titulo;
     private String autor;
-    private String fechaPublicacion;
+    private LocalDate fechaPublicacion;
 
-    public Libro(String isbn, String titulo, String autor, String fechaPublicacion) {
+    public Libro(String isbn, String titulo, String autor, LocalDate fechaPublicacion) {
     
     
     this.isbn = isbn;
@@ -27,7 +28,7 @@ public class Libro implements Serializable{
     public String getAutor() {
         return autor;
     }
-    public String getFechaPublicacion() {
+    public LocalDate getFechaPublicacion() {
         return fechaPublicacion;
     }
 
