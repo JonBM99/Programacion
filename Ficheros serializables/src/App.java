@@ -1,5 +1,4 @@
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -13,16 +12,20 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        List<Libro> Biblioteca = new LinkedList<>();
         boolean eof = false;
-        try (FileInputStream file = new FileInputStream(".\\Resources\\Biblioteca.dat"); ObjectInputStream reader = new ObjectInputStream(File)){
-            while (!eof){
-                Libro lLeido = (Libro) reader.readObject();
-                
+        try (FileInputStream file = new FileInputStream(".\\Resources\\Biblioteca.dat"); ObjectInputStream reader = new ObjectInputStream(file)) {
+            while (!eof) {
+                try {
+                    Libro lLeido = (Libro) reader.readObject();
+                    Biblioteca.add(lLeido);
+                } catch (IOException e) {
+                    eof = true;
+                }
             }
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Se ha producido un error " + e.getMessage());
         }
-        
-        
-        List <Libro> Biblioteca = new LinkedList<>();
         Libro l = null;
         Scanner entrada = new Scanner(System.in);
         String opcion;
