@@ -1,4 +1,5 @@
 public class Producto {
+    private String nombre;
     private String referencia;
     private String descripcion;
     private String tipo;
@@ -8,7 +9,10 @@ public class Producto {
     private int iva;
     private boolean aplicarDto;
     
-    public Producto(String referencia, String tipo, String descripcion) {
+    
+
+    public Producto(String nombre, String referencia, String descripcion, String tipo) {
+        this.nombre = nombre;
         this.referencia = referencia;
         this.descripcion = descripcion;
         this.tipo = tipo;
