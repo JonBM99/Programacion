@@ -44,12 +44,4 @@ public class Cliente extends Persona{
         sb.append('.');
         return sb.toString();
     }
-    
-    public void agregarArticuloAlquilado(Articulo articulo) {
-        articulosAlquilados.add(articulo);
-    }
-
-    public void eliminarArticuloAlquilado(Articulo articulo) {
-        articulosAlquilados.remove(articulo);
-    }
 }

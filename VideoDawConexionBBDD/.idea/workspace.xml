@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="8176c03d-87e6-46cb-b9c8-8ccb9c50c8b6" name="Changes" comment="" />
+    <list default="true" id="8176c03d-87e6-46cb-b9c8-8ccb9c50c8b6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/decroly/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/decroly/Cliente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/decroly/Videodaw.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/src/main/java/com/decroly/Videodaw.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/target/classes/com/decroly/Cliente.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo/target/classes/com/decroly/Cliente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demo/target/classes/com/decroly/Videodaw.class" beforeDir="false" afterPath="$PROJECT_DIR$/demo/target/classes/com/decroly/Videodaw.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,9 +20,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2wLkT9m42KYj3WGkeGgcq17m9RK" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -24,7 +34,13 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/daw1.COMPU-S028/Documents/Programacion/VideoDawConexionBBDD",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -44,10 +60,16 @@
       <option name="presentableId" value="Default" />
       <updated>1745828247650</updated>
       <workItem from="1745828249220" duration="33000" />
+      <workItem from="1745993847870" duration="844000" />
+      <workItem from="1745995385843" duration="284000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
