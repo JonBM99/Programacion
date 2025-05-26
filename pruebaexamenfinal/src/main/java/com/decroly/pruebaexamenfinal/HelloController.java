@@ -2,7 +2,9 @@ package com.decroly.pruebaexamenfinal;
 
 import com.decroly.pruebaexamenfinal.Utils.FileUtils;
 import com.decroly.pruebaexamenfinal.model.Producto;
+import com.decroly.pruebaexamenfinal.model.SQLAccess;
 import com.decroly.pruebaexamenfinal.model.Tipo;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -57,7 +59,7 @@ public class HelloController {
     private Button nuevoProductoBtn;
 
     @FXML
-    private Button editarProdcutoBtn;
+    private Button editarProductoBtn;
 
     @FXML
     private Button quitarProductoBtn;
@@ -68,18 +70,24 @@ public class HelloController {
     //Objetos para controlar las entidades
     ObservableList<Producto> lista = FXCollections.observableArrayList();
 
-    //Metodo initialize que se ejecuta al inicarse el HelloController
+    //Metodo initialize que se ejecuta al iniciarse el HelloController
     @FXML
     public void initialize() {
         tablaPanel.setVisible(true);
         registrarPanel.setVisible(false);
-        tipoRegisterField.getItems().setAll(Tipo.values());
         listaProductosView.setItems(lista);
+        tipoRegisterField.getItems().setAll(Tipo.values());
 
-
-        //Añadir listener a la propiedad de elemento seleccionado de la lista
+        //Añadir listener para los botones
         listaProductosView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue != null){
+            quitarProductoBtn.setDisable(newValue == null);
+            editarProductoBtn.setDisable(newValue == null);
+        });
+
+
+        //Añadir listener para actualizar los campos al seleccionar un producto
+        listaProductosView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null && productoenedicion != null){
                 idRegisterField.setText(String.valueOf(newValue.getId()));
                 nombreRegisterField.setText(newValue.getNombre());
                 descripcionRegisterField.setText(newValue.getDescripcion());
@@ -92,7 +100,7 @@ public class HelloController {
         //Añadir listener a las propiedades de focus de los TextFields
         idRegisterField.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
-                if(!validateId(idRegisterField.getText())) {
+                if(idRegisterField.getText().isEmpty()){
                     idRegisterField.setText("");
                     idRegisterField.setPromptText("Ingrese un numero");
                 }
@@ -101,25 +109,25 @@ public class HelloController {
 
         nombreRegisterField.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
-                if(validateNombre(nombreRegisterField.getText())){
+                if(nombreRegisterField.getText().isEmpty()){
                     nombreRegisterField.setText("");
-                    nombreRegisterField.setPromptText("Valor incorrecto");
+                    nombreRegisterField.setPromptText("Ingrese un nombre");
                 }
             }
         });
         descripcionRegisterField.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
-                if(validateDescripcion(descripcionRegisterField.getText())) {
+                if(descripcionRegisterField.getText().isEmpty()){
                     descripcionRegisterField.setText("");
-                    descripcionRegisterField.setPromptText("Valor incorrecto");
+                    descripcionRegisterField.setPromptText("Ingrese una descripcion");
                 }
             }
         });
         precioRegisterField.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue) {
-                if(validatePrecio(precioRegisterField.getText())) {
+                if(precioRegisterField.getText().isEmpty()){
                     precioRegisterField.setText("");
-                    precioRegisterField.setPromptText("Ingrese un numero decimal");
+                    precioRegisterField.setPromptText("Ingrese un precio");
                 }
             }
         });
@@ -137,14 +145,25 @@ public class HelloController {
         String descripcion = descripcionRegisterField.getText();
         String precio = precioRegisterField.getText();
         Tipo tipo = tipoRegisterField.getValue();
+        if(idRegisterField.getText().isEmpty() || nombreRegisterField.getText().isEmpty() || descripcionRegisterField.getText().isEmpty() || precioRegisterField.getText().isEmpty() || tipoRegisterField.getValue() == null){
+            showAlert("Error, todos los campos son obligatorios");
+        }else {
             Producto p = new Producto(Integer.parseInt(id), nombre, descripcion, Double.parseDouble(precio), tipo);
             lista.add(p);
+            SQLAccess.añadirProducto(p);
             showAlert("Exito, Producto añadido correctamente");
-            listaProductosView.setItems(lista);
-            //Limpiar los campos
             clearFields();
             selectPanelVisible(1);
             listaProductosView.refresh();
+        }
+    }
+    @FXML
+    private void guardarProducto(){
+        if(productoenedicion != null){
+            editarProductoConfirmar();
+        } else {
+            añadirproducto();
+        }
     }
 
     @FXML
@@ -152,48 +171,65 @@ public class HelloController {
         Producto seleccionado = productoseleccionado();
         if(seleccionado != null){
             lista.remove(seleccionado);
-            showAlert("Exito, Producto eliminado correctamente");
             listaProductosView.refresh();
-            clearFields();
+            selectPanelVisible(1);
+            SQLAccess.eliminarProducto(seleccionado);
+            showAlert("Exito, Producto eliminado correctamente");
         } else {
             showAlert("ERROR, No hay ningun producto seleccionado");
         }
     }
-
+    private Producto productoenedicion;
     @FXML
     private void editarProducto() {
         Producto seleccionado = productoseleccionado();
         if(seleccionado != null){
-            String nuevoId = idRegisterField.getText();
-            String nuevoNombre = nombreRegisterField.getText();
-            String nuevaDescripcion = descripcionRegisterField.getText();
-            String nuevoPrecio = precioRegisterField.getText();
-            Tipo nuevoTipo = tipoRegisterField.getValue();
-            if(validateId(nuevoId) && validateNombre(nuevoNombre) && validateDescripcion(nuevaDescripcion) && validatePrecio(nuevoPrecio)){
-                seleccionado.setId(Integer.parseInt(nuevoId));
-                seleccionado.setNombre(nuevoNombre);
-                seleccionado.setDescripcion(nuevaDescripcion);
-                seleccionado.setPrecio(Double.parseDouble(nuevoPrecio));
-                showAlert("Exito, Producto editado correctamente");
-                listaProductosView.refresh();
-                clearFields();
-            } else {
-                showAlert("ERROR, Todos los campos deben ser completados");
-            }
+            selectPanelVisible(0);
+
+            idRegisterField.setText(String.valueOf(seleccionado.getId()));
+            nombreRegisterField.setText(seleccionado.getNombre());
+            descripcionRegisterField.setText(seleccionado.getDescripcion());
+            precioRegisterField.setText(String.valueOf(seleccionado.getPrecio()));
+            tipoRegisterField.setValue(seleccionado.getTipo());
+
+            productoenedicion = seleccionado;
+
         } else {
             showAlert("ERROR, No hay ningun producto seleccionado");
         }
     }
+    @FXML
+    private void editarProductoConfirmar(){
+        String id = idRegisterField.getText();
+        String nombre = nombreRegisterField.getText();
+        String descripcion = descripcionRegisterField.getText();
+        String precio = precioRegisterField.getText();
+        Tipo tipo = tipoRegisterField.getValue();
+        if(idRegisterField.getText().isEmpty() || nombreRegisterField.getText().isEmpty() || descripcionRegisterField.getText().isEmpty() || precioRegisterField.getText().isEmpty() || tipoRegisterField.getValue() == null){
+            showAlert("Error, todos los campos son obligatorios");
+        }else {
+            productoenedicion.setId(Integer.parseInt(id));
+            productoenedicion.setNombre(nombre);
+            productoenedicion.setDescripcion(descripcion);
+            productoenedicion.setPrecio(Double.parseDouble(precio));
+            productoenedicion.setTipo(tipo);
 
+            listaProductosView.refresh();
+            SQLAccess.editarProducto(productoenedicion);
+            showAlert("Exito, Producto editado correctamente");
 
+            productoenedicion = null;
+            clearFields();
+            selectPanelVisible(1);
+        }
+    }
 
     @FXML
     private void saveInFile() {
-        FileUtils.WriteFile("export_Productos.dat", new LinkedList<Producto>());
+        FileUtils.writeFile("export_Productos.dat", new LinkedList<Producto>());
     }
 
     //Metodos internos para realizar operaciones
-
     @FXML
     private void cambiararegistro(){
         selectPanelVisible(0);
@@ -207,6 +243,7 @@ public class HelloController {
         tipoRegisterField.setPromptText("Tipo");
         tipoRegisterField.getSelectionModel().clearSelection();
     }
+
     private void selectPanelVisible(int panel){
         switch (panel){
             case 0:
@@ -222,18 +259,7 @@ public class HelloController {
                 tablaPanel.setVisible(false);
         }
     }
-    private boolean validateId(String Id){
-        return Id.matches("[1-9]{1,3}");
-    }
-    private boolean validateNombre(String Nombre){
-        return (Nombre.length() > 3 && Nombre.matches("[A-Z]{1}[a-z]{2,100}"));
-    }
-    private boolean validateDescripcion(String Descripcion){
-        return (Descripcion.length() > 10);
-    }
-    private boolean validatePrecio(String Precio){
-        return Precio.matches("[1-9]{1,3}[,]{1}[1-9]{2}");
-    }
+
 
     private void showAlert(String s) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -244,15 +270,7 @@ public class HelloController {
     }
 
     private Producto productoseleccionado() {
-        Producto seleccionado = listaProductosView.getSelectionModel().getSelectedItem();
-        if(seleccionado != null){
-            quitarProductoBtn.setDisable(false);
-            editarProdcutoBtn.setDisable(false);
-        } else {
-            quitarProductoBtn.setDisable(true);
-            editarProdcutoBtn.setDisable(true);
-        }
-        return seleccionado;
+        return listaProductosView.getSelectionModel().getSelectedItem();
     }
 }
 

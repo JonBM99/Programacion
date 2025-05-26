@@ -15,7 +15,7 @@
 
 <AnchorPane fx:id="mainPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.decroly.pruebaexamenfinal.HelloController">
    <children>
-      <VBox fx:id="registrarPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">
+      <VBox fx:id="registrarPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" visible="false">
          <children>
             <HBox fx:id="titlePanel" prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -58,7 +58,7 @@
                         <Insets left="-600.0" top="270.0" />
                      </HBox.margin>
                   </ComboBox>
-                  <Button fx:id="registrarProductoBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#añadirproducto" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: green;" text="Registrar" textAlignment="CENTER" textFill="WHITE">
+                  <Button fx:id="registrarProductoBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#guardarProducto" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: green;" text="Registrar" textAlignment="CENTER" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
@@ -73,23 +73,21 @@
             </HBox>
          </children>
       </VBox>
-      <VBox fx:id="tablaPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" visible="false">
+      <VBox fx:id="tablaPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="800.0">
+            <HBox prefHeight="90.0" prefWidth="900.0">
                <children>
-                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="900.0" text="Tabla de productos" textAlignment="CENTER">
+                  <Label alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="900.0" text="Tabla de" textAlignment="CENTER">
                      <font>
                         <Font name="Impact" size="34.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets bottom="10.0" />
+                     </HBox.margin>
                   </Label>
                </children>
             </HBox>
-            <ListView fx:id="listaProductosView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0">
-               <VBox.margin>
-                  <Insets left="50.0" />
-               </VBox.margin>
-            </ListView>
-            <Button fx:id="nuevoProductoBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#cambiararegistro" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: green;" text="Nuevo producto" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="nuevoProductoBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#cambiararegistro" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: green;" text="Añadir" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font>
@@ -97,21 +95,21 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <VBox.margin>
-                  <Insets left="50.0" top="15.0" />
+                  <Insets bottom="10.0" left="50.0" />
                </VBox.margin>
             </Button>
-            <Button fx:id="quitarProductoBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onKeyPressed="#eliminarProducto" onMouseClicked="#eliminarProducto" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: red;" text="Quitar producto" textFill="WHITE">
+            <Button fx:id="quitarProductoBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onKeyPressed="#eliminarProducto" onMouseClicked="#eliminarProducto" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: red;" text="Eliminar" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font>
                <VBox.margin>
-                  <Insets left="450.0" top="-50.0" />
+                  <Insets left="485.0" top="-60.0" />
                </VBox.margin>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="exportarDatosBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#saveInFile" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: blue;" text="Exportar datos" textFill="WHITE">
+            <Button fx:id="exportarDatosBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#saveInFile" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: blue;" text="Exportar datos" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font>
@@ -122,7 +120,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="editarProductoBtn1" alignment="CENTER" layoutX="260.0" layoutY="525.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#editarProducto" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: orange;" text="Editar producto" textFill="WHITE">
+            <Button fx:id="editarProductoBtn" alignment="CENTER" layoutX="260.0" layoutY="525.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#editarProducto" prefHeight="50.0" prefWidth="150.0" style="-fx-background-color: orange;" text="Editar" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial Black" size="12.0" />
                </font>
@@ -130,9 +128,17 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                <VBox.margin>
-                  <Insets left="250.0" top="-50.0" />
+                  <Insets bottom="10.0" left="260.0" top="-50.0" />
                </VBox.margin>
             </Button>
+            <ListView fx:id="listaProductosView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="800.0">
+               <VBox.margin>
+                  <Insets left="50.0" top="10.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="CROSSHAIR" />
+               </cursor>
+            </ListView>
          </children>
       </VBox>
    </children>

@@ -1,7 +1,9 @@
 package com.decroly.pruebaexamenfinal.model;
 
 
-public class Producto {
+public class Producto implements java.io.Serializable{
+
+    private static final long serialVersionUID = 1L;
 
     protected int id;
     protected String nombre;
